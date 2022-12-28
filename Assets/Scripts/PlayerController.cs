@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
-    private float verticalInput;
-    private float horizontalInput;
+    //public variables
+    public bool hasPickup;
+    public PickupType currentPickup = PickupType.None;
+   
+    //private variables
+    [SerializeField] private float speed = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +22,36 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+
+        if (currentPickup == PickupType.Key)
+        {
+            //UI to show key
+            Debug.Log("Key held.");
+        }
+
+        if (currentPickup == PickupType.Lightbulb)
+        {
+            //Ui to show Lightbulb
+            Debug.Log("Lightbulb Held");
+        }
     }
 
     private void PlayerMovement()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
         transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            hasPickup = true;
+            currentPickup = other.gameObject.GetComponent<Pickup>().pickupType;
+            Destroy(other.gameObject);
+        }
     }
 }
