@@ -27,7 +27,7 @@ public class DoorUnlock : MonoBehaviour
                 doorLocked = false;
                 playerController.currentPickup = PickupType.None;
                 // door opening animation
-                animator.SetTrigger("PlayerProximity");
+                animator.SetTrigger("PressE");
             }
              else if (Input.GetKeyDown(KeyCode.E) && doorLocked)
             {

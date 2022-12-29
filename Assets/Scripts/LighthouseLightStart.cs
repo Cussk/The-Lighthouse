@@ -28,7 +28,7 @@ public class LighthouseLightStart : MonoBehaviour
             lightbulbBroken = false;
             playerController.currentPickup = PickupType.None;
             // door opening animation
-            animator.SetTrigger("PlayerProximity");
+            animator.SetTrigger("PressE");
             spotLight.enabled = true;
             
         }
