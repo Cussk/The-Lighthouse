@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class LeverPuzzle : MonoBehaviour
 {
@@ -22,9 +19,19 @@ public class LeverPuzzle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && gateLocked)
         {
-            animator.SetTrigger("PressE");
+            animator.SetTrigger("Lever1");
+            animator.SetTrigger("Lever2");
+            //gateLocked = false;
+            //ui text gate unlocked
+            //Debug.Log("You hear the sound of a mechanism releasing in the distance...");
         }
-        else if (!gateLocked)
+        else if (Input.GetKeyDown(KeyCode.E) && gateLocked)
+        {
+            animator.SetTrigger("Lever1");
+            animator.SetTrigger("Lever2");
+            animator.SetTrigger("Lever3");
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && !gateLocked)
         {
             //ui for text
             Debug.Log("Gate is already unlocked");

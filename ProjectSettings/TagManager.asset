@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Lever1
+  - Lever2
+  - Lever3
   layers:
   - Default
   - TransparentFX
