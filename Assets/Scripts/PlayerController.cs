@@ -45,9 +45,9 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Pickup"))
+        if (other.gameObject.CompareTag("Pickup") && Input.GetKeyDown(KeyCode.E))
         {
             hasPickup = true;
             currentPickup = other.gameObject.GetComponent<Pickup>().pickupType;
