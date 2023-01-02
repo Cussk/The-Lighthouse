@@ -8,6 +8,8 @@ public class LighthouseLightStart : MonoBehaviour
     public bool lightbulbBroken = true;
     public Animator animator;
     public Light spotLight;
+    public Material brokenLight;
+    public Material fixedLight;
 
     //private variables
     private PlayerController playerController;
@@ -29,7 +31,8 @@ public class LighthouseLightStart : MonoBehaviour
             playerController.currentPickup = PickupType.None;
             // door opening animation
             animator.SetTrigger("PressE");
-            spotLight.enabled = true;
+            spotLight.enabled = true; //enables light component
+            GetComponent<Renderer>().material = fixedLight; //changes material
             
         }
         else if (Input.GetKeyDown(KeyCode.E) && lightbulbBroken)
