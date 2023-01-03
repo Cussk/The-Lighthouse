@@ -63655,10 +63655,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 585535649869952919, guid: 136cbd07f03b0464284741cd6b5b3b97,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549356891207351497, guid: 136cbd07f03b0464284741cd6b5b3b97,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701652007618788614, guid: 136cbd07f03b0464284741cd6b5b3b97,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8232272898480946424, guid: 136cbd07f03b0464284741cd6b5b3b97,
         type: 3}
       propertyPath: m_Controller
       value: 
+      objectReference: {fileID: 9100000, guid: dea3c1209494f9a4398f5febb34eb12f, type: 2}
+    - target: {fileID: 8232272898480946424, guid: 136cbd07f03b0464284741cd6b5b3b97,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9132911627730627104, guid: 136cbd07f03b0464284741cd6b5b3b97,
         type: 3}
@@ -63719,6 +63739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lever Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132911627730627118, guid: 136cbd07f03b0464284741cd6b5b3b97,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132911627730627119, guid: 136cbd07f03b0464284741cd6b5b3b97,
         type: 3}
