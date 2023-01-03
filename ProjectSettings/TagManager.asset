@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
-  - Lever1
-  - Lever2
-  - Lever3
+  - Monster
+  - Lighthouse Door
   layers:
   - Default
   - TransparentFX

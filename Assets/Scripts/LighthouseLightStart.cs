@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LighthouseLightStart : MonoBehaviour
@@ -10,6 +11,8 @@ public class LighthouseLightStart : MonoBehaviour
     public Light spotLight;
     public Material brokenLight;
     public Material fixedLight;
+    public TextMeshProUGUI lighthouseBroken;
+    public TextMeshProUGUI interactText;
 
     //private variables
     private PlayerController playerController;
@@ -25,6 +28,7 @@ public class LighthouseLightStart : MonoBehaviour
     //restarts lighbulb on entering trigger area if lightbulb held
     private void OnTriggerStay(Collider collider)
     {
+        interactText.gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.E) && playerController.currentPickup == PickupType.Lightbulb)
         {
             lightbulbBroken = false;
@@ -37,8 +41,15 @@ public class LighthouseLightStart : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E) && lightbulbBroken)
         {
-            //ui text "Door is Locked"
+            //ui text
+            lighthouseBroken.gameObject.SetActive(true);
             Debug.Log("Lightbulb is broken, you need a new lightbulb.");
         }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        interactText.gameObject.SetActive(false);
+        lighthouseBroken.gameObject.SetActive(false);   
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class LeverPuzzle : MonoBehaviour
@@ -5,6 +6,8 @@ public class LeverPuzzle : MonoBehaviour
     //public variables
     public bool gateLocked = true;
     public Animator animator;
+    public TextMeshProUGUI gateUnlockedText;
+    public TextMeshProUGUI interactText;
 
 
     // Start is called before the first frame update
@@ -15,18 +18,20 @@ public class LeverPuzzle : MonoBehaviour
 
    private void OnTriggerStay(Collider collider)
     {
+        interactText.gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.E) && gateLocked)
         {
-            animator.SetTrigger("Lever1");
-            animator.SetTrigger("Lever2");
+            animator.SetTrigger("PressE");
             gateLocked = false;
             //ui text gate unlocked
+            gateUnlockedText.gameObject.SetActive(true);
             Debug.Log("You hear the sound of a mechanism releasing in the distance...");
         }
-        else if (!gateLocked)
-        {
-            //ui for text
-            Debug.Log("Gate is already unlocked");
-        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        interactText.gameObject.SetActive(false);
+        gateUnlockedText.gameObject.SetActive(false);
     }
 }
