@@ -70,6 +70,7 @@ public class LighthouseLightStart : MonoBehaviour
         yield return new WaitForSeconds(5);
         storyOutro.gameObject.SetActive(true);
         Destroy(monster);
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
     }
 }
