@@ -10,6 +10,7 @@ public class FirstPersonCamera : MonoBehaviour
     //private variables
     [SerializeField] private float mouseSensitivity = 2.0f;
     private float cameraVerticalRotation = 0f;
+    private bool cursorLock = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,15 @@ public class FirstPersonCamera : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        FirstPersonLook();
+
+        CursorLock();
+
+    }
+
+    //FP camera movment
+    private void FirstPersonLook()
     {
         //mouse input
         float inputX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -33,6 +43,20 @@ public class FirstPersonCamera : MonoBehaviour
         //rotate camera and player around y-axis
 
         player.Rotate(Vector3.up * inputX);
+    }
 
+    //unlocks and relocks cursor
+    private void CursorLock()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && cursorLock)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            cursorLock = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !cursorLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            cursorLock = true;
+        }
     }
 }

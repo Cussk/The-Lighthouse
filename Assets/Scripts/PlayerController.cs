@@ -56,19 +56,25 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput);
     }
 
+    //triggers objects to pickup
     private void OnTriggerStay(Collider other)
     {
-        interactText.gameObject.SetActive(true);
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            interactText.gameObject.SetActive(true);
+        }
         if (other.gameObject.CompareTag("Pickup") && Input.GetKeyDown(KeyCode.E))
         {
+            
             hasPickup = true;
             currentPickup = other.gameObject.GetComponent<Pickup>().pickupType;
             Destroy(other.gameObject);
         }
     }
 
+    //deactivates interaction text on leaving trigger area
     private void OnTriggerExit(Collider other)
     {
-        interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
     }
 }

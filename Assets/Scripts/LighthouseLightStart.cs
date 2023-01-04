@@ -13,6 +13,8 @@ public class LighthouseLightStart : MonoBehaviour
     public Material fixedLight;
     public TextMeshProUGUI lighthouseBroken;
     public TextMeshProUGUI interactText;
+    public GameObject storyOutro;
+    public GameObject monster;
 
     //private variables
     private PlayerController playerController;
@@ -31,12 +33,8 @@ public class LighthouseLightStart : MonoBehaviour
         interactText.gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.E) && playerController.currentPickup == PickupType.Lightbulb)
         {
-            lightbulbBroken = false;
-            playerController.currentPickup = PickupType.None;
-            // door opening animation
-            animator.SetTrigger("PressE");
-            spotLight.enabled = true; //enables light component
-            GetComponent<Renderer>().material = fixedLight; //changes material
+            LighthouseLit();
+            StartCoroutine(StoryOutro());
             
         }
         else if (Input.GetKeyDown(KeyCode.E) && lightbulbBroken)
@@ -47,9 +45,31 @@ public class LighthouseLightStart : MonoBehaviour
         }
     }
 
+    //deactivates ui
     private void OnTriggerExit(Collider collider)
     {
         interactText.gameObject.SetActive(false);
         lighthouseBroken.gameObject.SetActive(false);   
+    }
+
+    private void LighthouseLit()
+    {
+        lightbulbBroken = false;
+        playerController.currentPickup = PickupType.None;
+        playerController.lighterImage.gameObject.SetActive(false);
+        // door opening animation
+        animator.SetTrigger("PressE");
+        spotLight.enabled = true; //enables light component
+        GetComponent<Renderer>().material = fixedLight; //changes material
+        lighthouseBroken.gameObject.SetActive(false);
+    }
+
+    //activates story outro ending the game
+    IEnumerator StoryOutro()
+    {
+        yield return new WaitForSeconds(5);
+        storyOutro.gameObject.SetActive(true);
+        Destroy(monster);
+        Time.timeScale = 0;
     }
 }
