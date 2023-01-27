@@ -2,7 +2,7 @@
 
 ![Screenshot (24)](https://user-images.githubusercontent.com/108804713/210657267-66d15f8f-336c-4748-9297-7947dc19be35.png)
 
-Game playable on Unity Play: https://play.unity.com/mg/other/the-lighthouse-3
+Game playable on Unity Play: https://play.unity.com/mg/other/the-lighthouse-4
 
  
 This project takes all the principles taught in both the Junior Programmer and Creative Core learning pathways through Unity.  It is a first-person puzzle/walking simulator level built from the ground up using art assets from Unity's Asset Store and assets provided in learning path courses.  Initially graybox porotype taken to complete level.  All the scripts were written with C#.
